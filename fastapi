@@ -1,0 +1,12 @@
+from fastapi import FastAPI
+import uvicorn, threading
+
+app = FastAPI()
+
+@app.get("/")
+def get_list():
+    return ['First', 'Second', 'Third']
+
+def run():
+    uvicorn.run(app, host="127.0.0.1", port=8893)
+threading.Thread(target=run, daemon=True).start()
